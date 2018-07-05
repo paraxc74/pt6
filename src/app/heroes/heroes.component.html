@@ -1,0 +1,34 @@
+<h2>My Heroes</h2>
+
+<div>
+  <label>Hero name:
+    <input #heroName />
+  </label>
+  <button type="button" class="btn btn-outline-success" routerLink="/detail/0">New</button>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Power</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active" *ngFor="let hero of heroes">
+      <!--th scope="row">Active</th-->
+      <td><a routerLink="/detail/{{hero.id}}">{{hero.id}}</a></td>
+      <td>{{hero.name}}</td>
+      <td>{{hero.age}}</td>
+      <td>{{hero.pow}}</td>
+      <td><button type="button" class="btn btn-outline-success" (click)="delete(hero)">Delete</button><button type="button" class="btn btn-outline-success" routerLink="/detail/{{hero.id}}">Detail</button></td>
+    </tr>
+  </tbody>
+</table>

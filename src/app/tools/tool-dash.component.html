@@ -1,0 +1,10 @@
+<h3>Top Heroes</h3>
+
+  <ul>
+    <li *ngFor="let tool of getTools()">
+      {{ tool.name }} mit dem Gewicht {{ tool.weight }}
+    </li>
+  </ul>
+
+<app-add-task></app-add-task>
+<app-tasks></app-tasks>

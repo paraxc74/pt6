@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Hero }         from '../hero';
 import { HeroService }  from '../hero.service';
+import { HeroDBService } from '../hero-db.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -12,6 +13,7 @@ import { HeroService }  from '../hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
+  id: string;
 
   powers = ['Really Smart', 'Super Flexible',
             'Super Hot', 'Weather Changer'];
@@ -19,17 +21,22 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
+    private location: Location,
+    private heroDBService: HeroDBService
   ) {}
 
   ngOnInit(): void {
-    this.getHero();
+    this.getDBHero();
   }
 
   getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.heroDBService.getHero(this.id)
       .subscribe(hero => this.hero = hero);
+  }
+
+  getDBHero(): void {
+    this.getHero();
   }
 
   goBack(): void {
@@ -37,7 +44,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
  save(): void {
-    this.heroService.updateHero(this.hero)
+    this.heroDBService.updateHero(this.hero)
       .subscribe(() => this.goBack());
   }
 }

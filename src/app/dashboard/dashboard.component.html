@@ -1,12 +1,13 @@
 <h3>Top Heroes</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let hero of heroes" class="col-1-4"
-      routerLink="/detail/{{hero.id}}">
-    <div class="module hero">
-      <h4>{{hero.name}}</h4>
-    </div>
-  </a>
-  <h4>{{this.getInfo()}}</h4>
+	<div *ngFor="let hero of heroes" class="card text-white bg-success mb-3 col-1-3" routerLink="/detail/{{hero.id}}" style="max-width: 20rem;">
+	  <div class="card-header">{{hero.name}}</div>
+	  <div class="card-body">
+	    <h4 class="card-title">Success card title</h4>
+	    <p class="card-text"></p>
+	  </div>
+	</div>
 </div>
 
-<app-hero-search></app-hero-search>
+
+<!--app-hero-search></app-hero-search-->

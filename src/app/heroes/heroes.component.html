@@ -2,12 +2,12 @@
 
 <div>
   <label>Hero name:
-    <input #heroName />
+    <input type="text" class="form-control" #heroName />
   </label>
-  <button type="button" class="btn btn-outline-success" routerLink="/detail/0">New</button>
+  <!--button type="button" class="btn btn-outline-success" (click)="add(heroName.value); heroName.value=''>New</button-->
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value=''">
-    add
+  <button type="button" class="btn btn-outline-success" (click)="add(heroName.value); heroName.value=''">
+    New
   </button>
 </div>
 
